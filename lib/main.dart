@@ -9,84 +9,56 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'My Profile',
-      home: Home(),
+      home: NeedBloodScreen(),
     );
   }
 }
 
-class Home extends StatelessWidget {
+class NeedBloodScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('My Profile'),
-        backgroundColor: Colors.amber,
+        title: Text('Need Blood'),
+        backgroundColor: Colors.red,
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.add)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.settings)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.call)),
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () {
+              // Add action here
+            },
+          ),
         ],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ProfileItem(
-              icon: Icons.icecream,
-              text: 'Ice cream is very delicious right?',
-            ),
-            ProfileItem(
-              icon: Icons.code,
-              text: 'Programming is not boring if you love it',
-            ),
-            ProfileItem(
-              icon: Icons.egg,
-              text:
-                  'If you submit code directly copy from chatgpt than mark will 0',
+            CircleAvatar(
+              radius: 70,
+              backgroundColor: Colors.grey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.bloodtype,
+                    color: Colors.red,
+                    size: 60,
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    'Donate Blood',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class ProfileItem extends StatelessWidget {
-  final IconData icon;
-  final String text;
-
-  const ProfileItem({required this.icon, required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CircleAvatar(
-          radius: 60,
-          backgroundColor: Color(0xFFE6DBF7),
-          child: Icon(
-            icon,
-            size: 60,
-            color: Colors.deepPurple,
-          ),
-        ),
-        SizedBox(height: 12),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18.0),
-          child: Text(
-            text,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        SizedBox(height: 35),
-      ],
     );
   }
 }
